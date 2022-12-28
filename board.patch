@@ -1,0 +1,20 @@
+diff --git a/bsp/board/bl808dk/board.c b/bsp/board/bl808dk/board.c
+index 1fd7b80c..41224995 100644
+--- a/bsp/board/bl808dk/board.c
++++ b/bsp/board/bl808dk/board.c
+@@ -211,7 +211,7 @@ static void console_init()
+     bflb_gpio_uart_init(gpio, GPIO_PIN_14, GPIO_UART_FUNC_UART0_TX);
+     bflb_gpio_uart_init(gpio, GPIO_PIN_15, GPIO_UART_FUNC_UART0_RX);
+ #elif defined(CPU_D0)
+-    bflb_gpio_init(gpio, GPIO_PIN_8, 21 | GPIO_ALTERNATE | GPIO_PULLUP | GPIO_SMT_EN | GPIO_DRV_1);
++    bflb_gpio_init(gpio, GPIO_PIN_32, 21 | GPIO_ALTERNATE | GPIO_PULLUP | GPIO_SMT_EN | GPIO_DRV_1);
+     //bflb_gpio_init(gpio, GPIO_PIN_9, 21 | GPIO_ALTERNATE | GPIO_PULLUP | GPIO_SMT_EN | GPIO_DRV_1);
+ #endif
+     struct bflb_uart_config_s cfg;
+@@ -576,4 +576,4 @@ __attribute__((weak)) uint32_t get_fattime(void)
+            | ((uint32_t)tm.min << 5)          /* Min 0 */
+            | ((uint32_t)tm.sec >> 1);         /* Sec 0 */
+ }
+-#endif
+\ No newline at end of file
++#endif

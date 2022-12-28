@@ -1,0 +1,14 @@
+diff --git a/newlib/libc/machine/riscv/pthread.c b/newlib/libc/machine/riscv/pthread.c
+index e6fef2ab5..7e62b7b90 100644
+--- a/newlib/libc/machine/riscv/pthread.c
++++ b/newlib/libc/machine/riscv/pthread.c
+@@ -4,8 +4,7 @@
+ 
+ #include <pthread.h>
+ 
+-#include "../../libgloss/libnosys/config.h"
+-#include "../../../libgloss/libnosys/warning.h"
++#include "../../../../libgloss/libnosys/warning.h"
+ 
+ int _ATTRIBUTE((__weak__))
+ pthread_once (pthread_once_t *__once_control,
