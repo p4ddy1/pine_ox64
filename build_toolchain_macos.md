@@ -26,6 +26,12 @@ The build requires some of the GNU coreutils and not the BSD equivalents that co
 
 `$ brew install coreutils`
 
+### textinfo
+
+The build require textinfo to build
+
+`$ brew install texinfo`
+
 ## Check out the sources
 
 ```
