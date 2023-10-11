@@ -35,20 +35,8 @@ The build require textinfo to build
 ## Check out the sources
 
 ```
-$ git clone https://github.com/T-head-Semi/xuantie-gnu-toolchain.git
+$ git clone --recurse-submodules https://github.com/T-head-Semi/xuantie-gnu-toolchain.git
 $ git clone https://github.com/bouffalolab/bl_mcu_sdk.git
-```
-
-## Building the toolchain
-
-Navigate to the folder and initialize the following submodules. GDB is optional if you don't want to use it.
-
-```
-$ cd xuantie-gnu-toolchain
-$ git submodule update --init --recursive riscv-binutils
-$ git submodule update --init --recursive riscv-gcc
-$ git submodule update --init --recursive riscv-gdb
-$ git submodule update --init --recursive riscv-newlib
 ```
 
 ## Patching newlib
@@ -57,7 +45,9 @@ Apply the following patch from this repo to the riscv-newlib repo. For some reas
 on an include.
 
 ```
+$ cd xuantie-gnu-toolchain
 $ cd riscv-newlib
+$ wget https://raw.githubusercontent.com/p4ddy1/pine_ox64/main/riscv-newlib.patch
 $ git apply riscv-newlib.patch
 ```
 
@@ -65,6 +55,7 @@ $ git apply riscv-newlib.patch
 
 We need to make a change to gcc for a successful build (See this [issue](https://github.com/riscv-software-src/homebrew-riscv/issues/47))
 ```
+$ cd ..
 $ sed -i '' "s/.*=host-darwin.o$//" riscv-gcc/gcc/config.host
 $ sed -i '' "s/.* x-darwin.$//" riscv-gcc/gcc/config.host
 ```
@@ -75,7 +66,7 @@ Create a folder where the toolchain should be installed to
 
 ```
 $ sudo mkdir /opt/riscv-toolchain
-$ sudo chown -R p4ddy /opt/riscv-toolchain
+$ sudo chown -R $USER /opt/riscv-toolchain
 ```
 
 Add the folder to your PATH variable. There will be another folder where the toolchain will be located which is not yet
